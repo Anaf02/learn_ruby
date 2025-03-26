@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def hello
-       "Hello!"
+  'Hello!'
 end
 
 def greet(name)
