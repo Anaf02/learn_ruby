@@ -15,3 +15,28 @@ def sum(numbers)
   }
   result
 end
+
+def multiply(numbers)
+  result = 1
+  numbers.each { |number|
+    result *= number
+  }
+  result
+end
+
+def power(number, power)
+  number ** power
+end
+
+def factorial(number)
+  result = number
+  if number == 0 || number == 1
+    return 1
+  end
+
+  while number > 1
+    number -=1
+    result *= number
+  end
+  result
+end
