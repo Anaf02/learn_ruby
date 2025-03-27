@@ -8,8 +8,9 @@ def shout(message)
   message.upcase
 end
 
-def repeat(message, times = 2)
-  message_array = ["#{message}"] * times * " "
+def repeat(message, n = 2)
+  #["#{message}"] * n * " "
+  ([message] * n).join(' ')
 end
 
 def start_of_word(word, number_of_letters)
