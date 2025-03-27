@@ -29,14 +29,9 @@ def power(number, power)
 end
 
 def factorial(number)
-  result = number
   if number == 0 || number == 1
-    return 1
+     1
+  else
+    number * factorial(number - 1)
   end
-
-  while number > 1
-    number -=1
-    result *= number
-  end
-  result
 end
