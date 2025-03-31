@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 def translate (text)
-  translation = text.split.map { |word|
+  text.split.map { |word|
     translate_word(word)
   }.join(" ")
 end
