@@ -10,6 +10,8 @@ def translate_word(word)
   suffix_punctuation = word[/\W+$/] || ""
   word_without_punctuation = word[/\A\W*(\w+)\W*\z/, 1] || word
 
+  was_capitalized = word_without_punctuation[0] == word_without_punctuation[0].upcase
+
   if /[aeiou]/i.match(word_without_punctuation[0])
     word_without_punctuation << "ay"
   elsif /[qu].*/i.match(word_without_punctuation)
@@ -19,5 +21,9 @@ def translate_word(word)
     parts = word_without_punctuation.split(/([aeiou].*)/)
     word_without_punctuation = parts[1] << parts[0] << "ay"
   end
+  if was_capitalized
+    word_without_punctuation.capitalize!
+  end
+
   prefix_punctuation + word_without_punctuation + suffix_punctuation
 end
