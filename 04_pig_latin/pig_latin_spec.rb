@@ -60,6 +60,11 @@ describe "#translate" do
     s.should == "aresquay"
   end
 
+  it "counts 'qu' as a consonant even when it's followed by a consonant" do
+    s = translate("qubit")
+    s.should == "bitquay"
+  end
+
   it "translates many words" do
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"

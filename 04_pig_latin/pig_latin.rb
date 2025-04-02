@@ -14,13 +14,11 @@ def translate_word(word)
 
   if /[aeiou]/i.match(word_without_punctuation[0])
     word_without_punctuation << "ay"
-  elsif /[qu].*/i.match(word_without_punctuation)
-    parts = word_without_punctuation.split(/([aeio].*)/)
-    word_without_punctuation = parts[1] << parts[0] << "ay"
   else
-    parts = word_without_punctuation.split(/([aeiou].*)/)
-    word_without_punctuation = parts[1] << parts[0] << "ay"
+    parts = word_without_punctuation.split(/(^[^aeiou]{0,}qu)|(^[^aeiou]{1,})/i)
+    word_without_punctuation = parts[2] << parts[1] << "ay"
   end
+
   if was_capitalized
     word_without_punctuation.capitalize!
   end
