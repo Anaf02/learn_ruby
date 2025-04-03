@@ -17,7 +17,7 @@
 #
 #
 
-require "pig_latin"
+require_relative "pig_latin"
 
 describe "#translate" do
 
@@ -60,6 +60,11 @@ describe "#translate" do
     s.should == "aresquay"
   end
 
+  it "counts 'qu' as a consonant even when it's followed by a consonant" do
+    s = translate("qubit")
+    s.should == "bitquay"
+  end
+
   it "translates many words" do
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"
@@ -68,5 +73,13 @@ describe "#translate" do
   # Test-driving bonus:
   # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
   # * retain the punctuation from the original phrase
+  it "translation capitalizes the first letter if the word was capitalized in the original text" do
+    s = translate("The quick Brown fox")
+    s.should == "Ethay ickquay Ownbray oxfay"
+  end
 
+  it "translation keeps punctuation same as in the original phrase" do
+    s = translate("'The quick', Brown fox!")
+    s.should == "'Ethay ickquay', Ownbray oxfay!"
+  end
 end
