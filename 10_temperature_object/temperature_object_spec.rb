@@ -12,12 +12,12 @@
 #
 # Remember to define the `from_celsius` factory method as a *class* method, not an *instance* method.
 #
-# The temperature object's constructor should accept an *options hash* which contains either a `:celcius` entry or a `:fahrenheit` entry.
+# The temperature object's constructor should accept an *options hash* which contains either a `:celsius` entry or a `:fahrenheit` entry.
 #
 #
 #
 
-require "temperature"
+require_relative "temperature"
 
 describe Temperature do
 
@@ -97,7 +97,16 @@ describe Temperature do
   # run *all* the tests during your refactoring, to make sure you did it right
   #
   describe "utility class methods" do
-
+    describe ".ftoc" do
+      fit "transforms from fahrenheit to celsius" do
+        Temperature.ftoc(212).should == 100
+      end
+      describe ".ctoc" do
+        fit "transforms from celsius to fahrenheit" do
+          Temperature.ctof(100).should == 212
+        end
+      end
+    end
   end
 
   # Here's another way to solve the problem!
