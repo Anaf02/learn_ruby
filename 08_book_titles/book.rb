@@ -3,9 +3,7 @@ DOWNCASE = %w[ the a an and in the of ]
 
 class Book
 
-  def title
-    @title
-  end
+  attr_reader :title
 
   def title=(title)
     @title = title.split.map.each_with_index do |word, index|
